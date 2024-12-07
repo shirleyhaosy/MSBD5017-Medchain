@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// All functions with a "test_" prefix and the to_String function are used for testing and demonstration of output
+// Functions with a "test_" prefix and the to_String function are used for testing and demonstration of output
 // These functions will not occur in the prod version.
 pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/utils/Strings.sol";
@@ -31,12 +31,6 @@ contract MedChainHealthData {
     uint256 public bonusProportion = 40; // proportion of profit to be distributed as bonus
     uint256 public bonusProportion_platform = 5; // proportion of profit to be distributed to the platform
     
-    // To set user address as testing data of healthData
-    address public addr1 = 0xE6c7b098603648F6F817fB3f8A6e09Da7c3Ca250;
-    address public addr2 = 0x22Dc5A9Fc2f1B2D03eB83F80c55c053C5d7bd3F7;
-    address public addr3 = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;  
-
-    
     struct TransactionDetails {
         uint256[] dataIds;  // data id should be array
         address buyer;
@@ -53,7 +47,13 @@ contract MedChainHealthData {
     uint256 public totalTransactionCount;
 
     address public admin;
-    
+
+
+
+    // To set user address as testing data of healthData
+    address public addr1 = 0xE6c7b098603648F6F817fB3f8A6e09Da7c3Ca250;
+    address public addr2 = 0x22Dc5A9Fc2f1B2D03eB83F80c55c053C5d7bd3F7;
+    address public addr3 = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;  
 
     event DataUploaded(address indexed user, uint256 dataId, uint256 price);
     event DataPurchased(address indexed buyer, uint256 dataId);
@@ -117,11 +117,11 @@ contract MedChainHealthData {
         }
     }
     
-    function test_setBuyer() public {
+    function setBuyer() public {
         uint256[] memory subscribed_list;
         buyers[msg.sender] = BuyerData(msg.sender, subscribed_list);
-        console.log("Set Buyer Data for Testing");
-        console.log("Buyer 1: ");  // only set test data for 1 buyer
+        console.log("Set Buyer Data:");
+        console.log("Buyer: ");  // only set test data for 1 buyer
         console.log("buyerAddress: ", toString(abi.encodePacked(buyers[msg.sender].buyerAddress)));
         console.log("subscribedData: ");
         for(uint i =0; i< buyers[msg.sender].subscribedData.length; i++){
