@@ -1,4 +1,4 @@
 # MSBD5017-Medchain
-This repo serves for MSBD5017 Group Project: Medchain: Blockchain-based Health Data System for Care Coordination. There are 2 smart contracts and a <a href= "Medchain.fig">UI prototype</a>.<br>
-To test the smart contracts, please upload the smart contracts to the "contracts" directory on Remix IDE. Simply compile and deploy with the test accounts. Hardhat console has been added to show the output of some key functions. <br>
+This repo serves for MSBD5017 Group Project: Medchain: Blockchain-based Health Data System for Care Coordination. There are 2 smart contracts and a <a href= "Medchain.fig">UI prototype</a>.<br><br>
+To test the smart contracts, please upload the smart contracts to the "contracts" directory on Remix IDE. Simply compile and deploy with the test accounts. Hardhat console has been added to show the output of some key functions. <br><br>
 To test <a href = "Medchain.sol">Medchain.sol</a>, you may call test_setHealthData and setBuyer functions first to initialize some testing data. HealthData can also be initialized via uploadData function. In addition, please note that you may need to switch test accounts for different roles, such as admin and buyer. For sample outputs of functions, you may check our reports for reference.
