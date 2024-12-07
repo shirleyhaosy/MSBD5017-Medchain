@@ -121,7 +121,7 @@ contract MedChainHealthData {
         uint256[] memory subscribed_list;
         buyers[msg.sender] = BuyerData(msg.sender, subscribed_list);
         console.log("Set Buyer Data:");
-        console.log("Buyer: ");  // only set test data for 1 buyer
+        console.log("Buyer: "); 
         console.log("buyerAddress: ", toString(abi.encodePacked(buyers[msg.sender].buyerAddress)));
         console.log("subscribedData: ");
         for(uint i =0; i< buyers[msg.sender].subscribedData.length; i++){
