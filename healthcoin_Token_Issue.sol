@@ -10,12 +10,12 @@ contract HealthCoin is ERC20, Ownable {
     constructor() ERC20("HealthCoin", "HLTH") Ownable(msg.sender) {
         // Mint 1,000,000 tokens to the deployer's address
         _mint(msg.sender, 1000000 * 10 ** decimals());
-        console.log("The input is:", 1000000 * 10 ** decimals());
+        console.log("The amount is:", 1000000 * 10 ** decimals());
     }
     
     /// @notice Mint additional tokens (if needed). Restricted to owner.
     function mint(address to, uint256 amount) external onlyOwner {
         _mint(to, amount);
-        console.log("The input is:", amount);
+        console.log("The amount is:", amount);
     }
 }
