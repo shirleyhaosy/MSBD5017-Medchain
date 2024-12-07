@@ -31,13 +31,14 @@ contract MedChainHealthData {
     uint256 public bonusProportion = 40; // proportion of profit to be distributed as bonus
     uint256 public bonusProportion_platform = 5; // proportion of profit to be distributed to the platform
     
+    // To set user address as testing data of healthData
     address public addr1 = 0xE6c7b098603648F6F817fB3f8A6e09Da7c3Ca250;
     address public addr2 = 0x22Dc5A9Fc2f1B2D03eB83F80c55c053C5d7bd3F7;
     address public addr3 = 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;  
 
     
     struct TransactionDetails {
-        uint256[] dataIds;  // data id should be tuple
+        uint256[] dataIds;  // data id should be array
         address buyer;
         uint256 timestamp;
     }
@@ -105,24 +106,23 @@ contract MedChainHealthData {
             totalDataCount ++;
 
             console.log("Health Data ", Strings.toString(i+1),": ");
-            console.log(string.concat("dataId: "), Strings.toString(healthData[i].dataId));
-            console.log(string.concat("userAddress: "), toString(abi.encodePacked(healthData[i].userAddress)));
-            console.log(string.concat("dataPrice: "), Strings.toString(healthData[i].dataPrice));
-            console.log(string.concat("healthDataCategory: "), healthData[i].healthDataCategory);
-            console.log(string.concat("dataValue: "), healthData[i].dataValue);
-            console.log(string.concat("demographicInfo: "), healthData[i].demographicInfo);
-            console.log(string.concat("timestamp: "), Strings.toString(healthData[i].timestamp));
+            console.log("dataId: ", Strings.toString(healthData[i].dataId));
+            console.log("userAddress: ", toString(abi.encodePacked(healthData[i].userAddress)));
+            console.log("dataPrice: ", Strings.toString(healthData[i].dataPrice));
+            console.log("healthDataCategory: ", healthData[i].healthDataCategory);
+            console.log("dataValue: ", healthData[i].dataValue);
+            console.log("demographicInfo: ", healthData[i].demographicInfo);
+            console.log("timestamp: ", Strings.toString(healthData[i].timestamp));
             console.log("------------------------------");
         }
     }
     
     function test_setBuyer() public {
         uint256[] memory subscribed_list;
-        //buyers[addr_buyer_test] = BuyerData(addr_buyer_test, subscribed_list);
         buyers[msg.sender] = BuyerData(msg.sender, subscribed_list);
         console.log("Set Buyer Data for Testing");
         console.log("Buyer 1: ");  // only set test data for 1 buyer
-        console.log(string.concat("buyerAddress: "), toString(abi.encodePacked(buyers[msg.sender].buyerAddress)));
+        console.log("buyerAddress: ", toString(abi.encodePacked(buyers[msg.sender].buyerAddress)));
         console.log("subscribedData: ");
         for(uint i =0; i< buyers[msg.sender].subscribedData.length; i++){
             console.log( buyers[msg.sender].subscribedData[i]);
@@ -140,13 +140,13 @@ contract MedChainHealthData {
         userOwnedData[msg.sender].push(dataId);
         emit DataUploaded(msg.sender, dataId, price);
         console.log("New user health data uploaded:");
-        console.log(string.concat("dataId: "), Strings.toString(healthData[dataId].dataId));
-        console.log(string.concat("userAddress: "), toString(abi.encodePacked(healthData[dataId].userAddress)));
-        console.log(string.concat("dataPrice: "), Strings.toString(healthData[dataId].dataPrice));
-        console.log(string.concat("healthDataCategory: "), healthData[dataId].healthDataCategory);
-        console.log(string.concat("dataValue: "), healthData[dataId].dataValue);
-        console.log(string.concat("demographicInfo: "), healthData[dataId].demographicInfo);
-        console.log(string.concat("timestamp: "), Strings.toString(healthData[dataId].timestamp));
+        console.log("dataId: ", Strings.toString(healthData[dataId].dataId));
+        console.log("userAddress: ", toString(abi.encodePacked(healthData[dataId].userAddress)));
+        console.log("dataPrice: ", Strings.toString(healthData[dataId].dataPrice));
+        console.log("healthDataCategory: ", healthData[dataId].healthDataCategory);
+        console.log("dataValue: ", healthData[dataId].dataValue);
+        console.log("demographicInfo: ", healthData[dataId].demographicInfo);
+        console.log("timestamp: ", Strings.toString(healthData[dataId].timestamp));
     }
     
 
@@ -161,7 +161,7 @@ contract MedChainHealthData {
             
             buyers[msg.sender].subscribedData.push(dataId);
             
-            console.log(string.concat("Health data ", Strings.toString(dataId)," has been bought."));
+            console.log("Health data ", Strings.toString(dataId)," has been bought.");
 
             // Split payment
             uint256 userShare = (data.dataPrice * price_to_user) / 100;
